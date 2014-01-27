@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Kunde einer Bank.
  *
- * @author Ruedi Baumann
- * @version 1.0 / 09.05.2010
+ * @author Frido Zurlinden / Christian Kiss
+ * @version 1.0 / 27.01.2014
  */
 public class Kunde implements Serializable {
   private static final long serialVersionUID = 1660302109623167466L;

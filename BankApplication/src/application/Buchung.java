@@ -8,8 +8,8 @@ import java.util.Date;
 /**
  * Buchung auf ein Bankkonto.
  * 
- * @author Ruedi Baumann
- * @version 1.0 / 09.05.2010
+ * @author Frido Zurlinden / Christian Kiss
+ * @version 1.0 / 27.01.2014
  */
 public class Buchung implements Serializable {
   private static final long serialVersionUID = 5650666995154951130L;

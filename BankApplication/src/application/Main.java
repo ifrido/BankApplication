@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 /**
  * Start / Loginpage
  *
- * @author Christian Kiss
+ * @author Frido Zurlinden / Christian Kiss
  * @version 1.0 / 27.01.2014
  */
 

@@ -9,8 +9,8 @@ import java.util.List;
 /**
  * Diese Klasse implementiert das Konto.
  *
- * @author Ruedi Baumann
- * @version 1.0 / 09.05.2010
+ * @author Frido Zurlinden / Christian Kiss
+ * @version 1.0 / 27.01.2014
  */
 public class Konto implements Serializable {
   private static final long serialVersionUID = 9194785062997852540L;

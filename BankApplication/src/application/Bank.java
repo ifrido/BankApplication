@@ -15,8 +15,8 @@ import java.util.List;
  * Bank implementiert die Business-Schicht 
  * und gibt die Resultate als Strings zurück.
  *
- * @author Ruedi Baumann
- * @version 1.0 / 09.05.2010
+ * @author Frido Zurlinden / Christian Kiss
+ * @version 1.0 / 27.01.2014
  */
 public class Bank {
   /**
