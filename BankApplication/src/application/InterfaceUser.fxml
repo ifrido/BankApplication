@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankController">
+<children><Accordion layoutX="14.0" layoutY="68.5" prefHeight="520.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml">
+  <panes>
+    <TitledPane animated="false" text="Konten">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" text="Zahlungen">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" text="Konto verwalten">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane><TitledPane animated="false" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+  </panes>
+</Accordion><Text fontSmoothingType="LCD" layoutX="36.931640625" layoutY="40.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank-Projekt" /><GridPane layoutX="223.0" layoutY="69.0" prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: #454545;" xmlns:fx="http://javafx.com/fxml">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>
+</children></AnchorPane>

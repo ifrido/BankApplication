@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankController">
+<children><Button contentDisplay="CENTER" layoutX="456.0" layoutY="317.0" mnemonicParsing="false" text="Login" textAlignment="CENTER" /><TextField layoutX="353.0" layoutY="248.0" /><PasswordField layoutX="353.0" layoutY="279.0" /><Text layoutX="252.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benutzername" /><Text layoutX="252.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+</children></AnchorPane>
