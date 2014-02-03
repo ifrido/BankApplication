@@ -1,4 +1,5 @@
 .root{
+	-fx-font-family: arial;
     -fx-font-size: 14;
     -fx-background-color: #FFFFFF;
 }

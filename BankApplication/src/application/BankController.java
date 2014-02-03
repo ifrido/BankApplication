@@ -17,7 +17,7 @@ public class BankController {
 	PasswordField loginPassword;
 	public void login(){
 		loginUser.getText();
-		System.out.println(loginUser.getText().toString());
+		System.out.println(loginUser.getText());
 	}
 	
 	
