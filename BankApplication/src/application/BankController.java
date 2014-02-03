@@ -1,6 +1,5 @@
 package application;
 
-import javax.swing.MenuElement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
@@ -14,10 +13,11 @@ public class BankController {
 	// Login
 	@FXML
 	TextField loginUser;
+	@FXML
 	PasswordField loginPassword;
 	public void login(){
 		loginUser.getText();
-		System.out.println(loginUser.getText());
+		System.out.println(loginUser.getText().toString());
 	}
 	
 	
