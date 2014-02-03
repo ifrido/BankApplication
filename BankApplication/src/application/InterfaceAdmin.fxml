@@ -3,8 +3,35 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankController">
-<children><Button contentDisplay="CENTER" layoutX="456.0" layoutY="317.0" mnemonicParsing="false" text="Login" textAlignment="CENTER" /><TextField layoutX="353.0" layoutY="248.0" /><PasswordField layoutX="353.0" layoutY="279.0" /><Text layoutX="252.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benutzername" /><Text layoutX="252.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+<children><Accordion layoutX="14.0" layoutY="136.0" prefHeight="450.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml">
+  <panes>
+    <TitledPane animated="false" text="Konten">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" text="Zahlungen">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane>
+    <TitledPane animated="false" text="Konto verwalten">
+      <content>
+        <AnchorPane />
+      </content>
+    </TitledPane><TitledPane animated="false" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+  </panes>
+</Accordion><GridPane layoutX="223.0" layoutY="136.0" prefHeight="450.0" prefWidth="663.0" style="-fx-background-color: #454545;" styleClass="/BankApplication/src/application/application.css" stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" xmlns:fx="http://javafx.com/fxml">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane><AnchorPane layoutX="24.0" layoutY="22.0" prefHeight="96.0" prefWidth="219.0" styleClass="logo" stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" />
 </children></AnchorPane>

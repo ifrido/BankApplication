@@ -1,7 +1,8 @@
-.background{
-    -fx-background-color: #000333;
-}
-
 .root{
     -fx-font-size: 14;
+    -fx-background-color: #FFFFFF;
+}
+
+.logo{
+    -fx-background-image: url("BankLogo.png") ;
 }
