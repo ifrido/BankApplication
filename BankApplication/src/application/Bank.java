@@ -147,6 +147,39 @@ public class Bank {
     return konto;
   }
 
+
+  // Erweiterung Christian Kiss
+  /**
+   * Geld überweisen
+   * @param kontonummer Kontonummer zu einem Konto
+   * @param betrag Betrag, der einzuzahlen ist
+   * @return Das modifizierte Konto wird zurück gegeben
+   */
+
+  public Konto ueberweisung(String kontonummer, double betrag, String zielkonto, String mitteilung) { 
+	    
+	  	// Konto von dem der Abgang stattfindet
+	  	Konto konto = sucheKontonummer(kontonummer);
+	  	if (konto != null) {
+		      
+	  		konto.getBuchungen().add(new Buchung(-betrag, new Date(), "Überweisung " + mitteilung));
+		      
+		
+	  		// Zielkontonummer, falls auf der selben Bank, dann überweisung intern
+			Konto kontoZiel = sucheKontonummer(zielkonto);
+			if (kontoZiel != null) {
+				kontoZiel.getBuchungen().add(new Buchung(betrag, new Date(), "Überweisung " + mitteilung));
+			}
+			 
+			speichern();
+	  	
+	  	}
+	  	
+	    return konto;
+	  }
+  
+ 
+  
   /**
    * Holt das Konto für die mitgegebene Kontonummer.
    * @param kontonummer Kontonummer zu einem Konto
@@ -204,10 +237,13 @@ public class Bank {
     }
   }
 
+  
+  // musste in Public geändert werden, da sonst Kundenänderungen nicht gespeichert werden können!
+  // Christian Kiss
   /**
    * In die Kundendatei werden die Kunden eingeschrieben.
    */
-  private void speichern() { 
+  public void speichern() { 
     try {
       ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(datei));
       oos.writeObject(kunden);

@@ -30,7 +30,7 @@ public class BankController {
 	@FXML
 	PasswordField loginPassword;
 	public void login(){		
-		Kunde user = bank.login(loginUser.getText(), loginPassword.getText());
+//		Kunde user = bank.login(loginUser.getText(), loginPassword.getText());
 		System.out.println(loginUser.getText());
 		//app.switchScene(Main.USER);
 	}
@@ -73,9 +73,15 @@ public class BankController {
 
 	}
 	
+
 	
 	
 	
+	
+
+
+	
+		
 	
 	
 }
