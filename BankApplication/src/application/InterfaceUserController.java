@@ -1,23 +1,39 @@
 package application;
 
 
+import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 public class InterfaceUserController {
 	private Bank bank = Bank.getInstance();
+	private Kunde user;
+	
+	Stage prevStage;
+
+    public void setPrevStage(Stage stage){
+         this.prevStage = stage;
+    }
 
 	
 	// Userauswahl anlegen
@@ -59,6 +75,14 @@ public class InterfaceUserController {
 		PasswordField userPasswort;
 		@FXML
 		Text userStatus;
+		
+		//Variable Logout
+		@FXML
+		TitledPane logoutPane;
+		
+		//Variable angemeldeter User
+		@FXML
+		Text userNameStatus;
 
 		
 		
@@ -242,9 +266,25 @@ public class InterfaceUserController {
 
 	}
 
+	public void logout() {
+		try {
+			Stage primaryStage = (Stage) logoutPane.getScene().getWindow();
+			primaryStage.setTitle("Login");
+			FXMLLoader myLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+			Pane myPane = (Pane)myLoader.load();
+			BankController controller = (BankController) myLoader.getController();
+			controller.setPrevStage(primaryStage);
+			Scene myScene = new Scene(myPane);        
+			primaryStage.setScene(myScene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
-		
-		
+	public void initUser(Kunde user) {
+		this.user = user;
+	}
 		
 		
 	
