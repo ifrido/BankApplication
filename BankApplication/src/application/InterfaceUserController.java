@@ -31,12 +31,6 @@ public class InterfaceUserController {
     }
 
 	
-	// Userauswahl anlegen
-	// Nach Usereinloggen Session von User, diese Variable nur Temp
-	Kunde tempKunde = bank.holeKunde("1000000");
-	
-	
-	
 	  /**
 	   * ----------- Christian Kiss -----------
 	   * InterfaceAdmin
@@ -45,7 +39,7 @@ public class InterfaceUserController {
 	
 		// Variablen Menüpunkt Benutzer verwalten
 		@FXML
-		Pane userZahlungen, userKonten, userEdit;
+		Pane userZahlungen, userKonten, userEdit, paneLogin;
 
 		// Variablen Menüpunkt Konten verwalten
 		@FXML
@@ -91,6 +85,7 @@ public class InterfaceUserController {
 			userZahlungen.setVisible(false);
 			userKonten.setVisible(false);
 			userEdit.setVisible(false);
+			paneLogin.setVisible(false);
 		}
 
 		
@@ -104,8 +99,9 @@ public class InterfaceUserController {
 			
 	
 			//kontowahl leeren, dann befüllen
+			
 			kontoWahl.getItems().clear();
-		    for (Konto q : tempKunde.getKonten()) {
+		    for (Konto q : user.getKonten()) {
 		    	kontoWahl.getItems().add(q.getNummer());
 		    }
 			
@@ -120,7 +116,7 @@ public class InterfaceUserController {
 			
 			//zahlungKonto leeren, dann befüllen
 			zahlungKonto.getItems().clear();
-		    for (Konto q : tempKunde.getKonten()) {
+		    for (Konto q : user.getKonten()) {
 		    	zahlungKonto.getItems().add(q.getNummer());
 		    }
 		}
@@ -132,9 +128,9 @@ public class InterfaceUserController {
 			userEdit.setVisible(true);
 
 			// Felder vorfüllen, aus aktuellen Userdaten
-			userKundennummer.setText(tempKunde.getKundennummer());
-			userName.setText(tempKunde.getName());
-			userPasswort.setText(tempKunde.getPasswort());
+			userKundennummer.setText(user.getKundennummer());
+			userName.setText(user.getName());
+			userPasswort.setText(user.getPasswort());
 		}
 		
 		

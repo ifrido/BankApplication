@@ -11,13 +11,12 @@
 
 <AnchorPane id="" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceAdminController">
 	<children>
-		<Text fx:id="userNameStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default"/>
+		<Text fx:id="userNameStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default" />
 		<Accordion fx:id="menue" layoutX="14.0" layoutY="128.0" prefHeight="68.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml">
 			<panes>
 				<TitledPane id="" fx:id="" animated="false" onMouseClicked="#PaneKundenAnlegen" text="Kunden anlegen" />
 				<TitledPane fx:id="" animated="false" onMouseClicked="#PaneKontoAnlegen" text="Konten anlegen" />
 				<TitledPane animated="false" onMouseClicked="#PaneZahlungen" text="Zahlungen" />
-				<TitledPane animated="false" onMouseClicked="#generateSampleData" text="Sampledata" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 				<TitledPane fx:id="logoutPane" animated="false" onMouseClicked="#logout" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 			</panes>
 		</Accordion>
@@ -71,26 +70,7 @@
 				</Text>
 			</children>
 		</Pane>
-		<Pane layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-			<children>
-				<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kundennummer" />
-				<TextField editable="false" layoutX="150.0" layoutY="3.0" prefHeight="25.0" prefWidth="300.0" />
-				<Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-				<TextField layoutX="150.0" layoutY="43.0" prefHeight="25.0" prefWidth="300.0" />
-				<Text layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" />
-				<PasswordField layoutX="150.0" layoutY="83.0" prefHeight="25.0" prefWidth="300.0" />
-				<Button layoutX="383.0" layoutY="123.0" mnemonicParsing="false" text="speichern" />
-				<Text layoutX="150.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0">
-					<fill>
-						<Color red="1.0" />
-					</fill>
-				</Text>
-			</children>
-			<padding>
-				<Insets left="5.0" />
-			</padding>
-		</Pane>
-		<Pane fx:id="kontoZahlungen" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+		<Pane fx:id="kontoZahlungen" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 			<children>
 				<Button layoutX="150.0" layoutY="123.0" mnemonicParsing="false" onMouseClicked="#zahlungenEinAus" text="Ein/Auszahlen" />
 				<Text layoutX="15.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ein/Auszahlungen" />
@@ -145,6 +125,10 @@
 				</ComboBox>
 				<Text layoutX="15.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ein/Auszahlen" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 			</children>
-		</Pane>
+		</Pane><Pane fx:id="paneLogin" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<children>
+<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Herzlich willkommen in ihrem Admin-Bereich" /><Text layoutX="15.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bitte wählen sie auf der linken Seiten weitere Optionen." xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+</children>
+</Pane>
 	</children>
 </AnchorPane>

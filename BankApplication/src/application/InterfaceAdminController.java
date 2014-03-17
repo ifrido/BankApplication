@@ -38,7 +38,7 @@ public class InterfaceAdminController {
 
 	// Variablen Pane
 	@FXML
-	Pane kundenAnlegen, kontoAnlegen, kontoZahlungen;
+	Pane kundenAnlegen, kontoAnlegen, kontoZahlungen, paneLogin;
 
 	// Variablen Kunde anlegen
 	@FXML
@@ -88,6 +88,7 @@ public class InterfaceAdminController {
 		kundenAnlegen.setVisible(false);
 		kontoAnlegen.setVisible(false);
 		kontoZahlungen.setVisible(false);
+		paneLogin.setVisible(false);
 	}
 
 	// Pane kundenAnlegen anzeigen
@@ -314,6 +315,8 @@ public class InterfaceAdminController {
 	 * ----------- Christian Kiss ----------- 
 	 * Generate SampleData vorher
 	 * bank.dat löschen, sonst doppelt !!!
+	 * Button im GUI gelöscht, da durch mehrfaches drücken
+	 * User doppelt zugewiesen werden
 	 */
 
 	public void generateSampleData() {
