@@ -30,7 +30,7 @@
 		</Accordion>
 		<AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="96.0"
 			prefWidth="219.0" styleClass="logo"
-			stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" />
+			stylesheets="file:src/application/application.css" />
 
 		<Pane fx:id="userKonten" layoutX="242.0" layoutY="128.0"
 			prefHeight="460.0" prefWidth="644.0" visible="false"
