@@ -121,11 +121,12 @@ public class InterfaceUserController {
 		    }
 		}
 
-		// Pane Zahlungen anzeigen
+		// Pane userEdit anzeigen
 		public void PaneUserEdit(){
 			
 			disableAllPanes();
 			userEdit.setVisible(true);
+			userStatus.setVisible(false);
 
 			// Felder vorfüllen, aus aktuellen Userdaten
 			userKundennummer.setText(user.getKundennummer());
@@ -253,6 +254,7 @@ public class InterfaceUserController {
 		bank.holeKunde(userKundennummer.getText()).setPasswort(userPasswort.getText());
 		bank.speichern();
 		userStatus.setText("Erfolgreich geändert!");
+		userStatus.setVisible(true);
 		
 
 	}
