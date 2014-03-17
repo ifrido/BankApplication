@@ -161,26 +161,7 @@ public class InterfaceAdminController {
 		}
 	
 	
-		// ------ Funktion ok - ck ------
-		// Neues Konto anlegen
-		public void kontoAnlegen(){
-		
-			// Variable kürzen, da Name noch mit angezeigt wird
-			Kunde kundeKonto = bank.holeKunde(kontoKundenliste.getValue().substring(0, 7));
-		    Konto neuesKonto = bank.neuesKonto(0);
-		    kundeKonto.addKonto(neuesKonto);
-
-		// Felder zurücksetzen
-		kundeKundennummer.clear();
-		kundeName.clear();
-		kundePassword.clear();
-		kundeStatus.setText("Kunde erfolgreich angelegt");
-
-		// Nochmal überdenken, mit Counter in BANK !!!!
-		kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
-
-	}
-
+	// ------ Funktion ok - ck ------
 	// Neues Konto anlegen
 	public void kontoAnlegen() {
 
