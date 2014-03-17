@@ -41,6 +41,7 @@ public class BankController implements Initializable {
        prevStage.close();
 
        stage.show();
+
     }
 	
 /*	Main app;
@@ -59,7 +60,7 @@ public class BankController implements Initializable {
 	Label loginStatus;
 
 	
-	public void login(){		
+	public void login(){
 		Kunde user = bank.login(loginUser.getText(), loginPassword.getText());
 		if(user != null) {
 			try {
@@ -90,15 +91,8 @@ public class BankController implements Initializable {
 			}
 		} else {
 		loginStatus.setText("Kundennummer oder Passwort nicht korrekt");
-		// alle Kunden auflisten zur Kontrolle
+		}
 		
-		for (Kunde q : bank.holeKunden()) {
-			System.out.println("Name: " + q.getName() + "\nKundennummer: "
-					+ q.getKundennummer() + "\nPasswort: " + q.getPasswort() + "\nAdminrolle: " + String.valueOf(q.getAdmin()));
-			System.out.println(bank.holeKonten(q));
-			System.out.println();
-		}
-		}
 		//app.switchScene(Main.USER);
 	}
 	

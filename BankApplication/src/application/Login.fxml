@@ -8,7 +8,7 @@
 
 <AnchorPane id="" prefHeight="600.0" prefWidth="900.0" style="-fx-font-family: arial;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankController">
 	<children>
-		<Button fx:id="loginButton" onAction="#login" contentDisplay="CENTER" layoutX="456.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#login" text="Login" textAlignment="CENTER" />
+		<Button fx:id="loginButton" onAction="#login" contentDisplay="CENTER" layoutX="456.0" layoutY="317.0" mnemonicParsing="false" text="Login" textAlignment="CENTER" />
 		<TextField fx:id="loginUser" onAction="#login" layoutX="353.0" layoutY="248.0" />
 		<PasswordField fx:id="loginPassword" onAction="#login" layoutX="353.0" layoutY="279.0" />
 		<Text layoutX="252.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: arial;" text="Benutzername" />
