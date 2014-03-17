@@ -95,6 +95,7 @@ public class InterfaceAdminController {
 	public void PaneKundenAnlegen() {
 		disableAllPanes();
 		kundenAnlegen.setVisible(true);
+		kundeStatus.setVisible(false);
 
 		// nochmal überdenken, eventuell mit Counter und Globaler Variable
 		kundeKundennummer.setText("10"
@@ -105,6 +106,7 @@ public class InterfaceAdminController {
 	// Pane kontoAnlegen anzeigen
 	public void PaneKontoAnlegen() {
 		disableAllPanes();
+		kontoStatus.setVisible(false);
 		kontoAnlegen.setVisible(true);
 
 		// Kundenliste erst leeren und dann anzeigen
@@ -118,7 +120,9 @@ public class InterfaceAdminController {
 	public void PaneZahlungen() {
 		disableAllPanes();
 		kontoZahlungen.setVisible(true);
-
+		zahlungenStatusEinAus.setVisible(false);
+		zahlungenStatusUeb.setVisible(false);
+		
 		// Mit vorgegebenen Funktionen können die Konten
 		// leider nur über den Kunden geholt werden 
 
