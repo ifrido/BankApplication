@@ -165,7 +165,7 @@ public class InterfaceAdminController {
 		}
 
 		// Prüfen, ob Betrag in double wandelbar ist
-		// und auf 2 Nachkommastellen runden
+		// und auf 2 Nachkommastellen runden 
 		double betragKorrekt = 0;
 		try {
 			// Prüfung, ob Double möglich
