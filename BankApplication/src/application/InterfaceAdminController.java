@@ -366,14 +366,8 @@ public class InterfaceAdminController {
 	}
 	
 	public void initUser(Kunde user) {
-		this.user = user;
+		this.user = user;		
+		userNameStatus.setText("User: "+user.getName());
+
 	}
-
-
-
-
-	
-	
-	
-
 }

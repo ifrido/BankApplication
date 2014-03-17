@@ -11,7 +11,7 @@
 
 <AnchorPane id="" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceAdminController">
 	<children>
-		<Text fx:id="userStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default"/>
+		<Text fx:id="userNameStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default"/>
 		<Accordion fx:id="menue" layoutX="14.0" layoutY="128.0" prefHeight="68.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml">
 			<panes>
 				<TitledPane id="" fx:id="" animated="false" onMouseClicked="#PaneKundenAnlegen" text="Kunden anlegen" />
