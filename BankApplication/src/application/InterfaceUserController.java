@@ -26,6 +26,11 @@ public class InterfaceUserController {
 	
 	Stage prevStage;
 
+	/**
+     * Methode für die alte Stage zu holen wenn ein neuer Controller geladen wird.
+     * @author fridolin.zurlinden
+     * @param stage
+     */
     public void setPrevStage(Stage stage){
          this.prevStage = stage;
     }
@@ -132,15 +137,7 @@ public class InterfaceUserController {
 			userKundennummer.setText(user.getKundennummer());
 			userName.setText(user.getName());
 			userPasswort.setText(user.getPasswort());
-		}
-		
-		
-		public void PaneLogout(){
-			bank.logout();
-		}
-
-
-		
+		}		
 		
 		  /**
 		   * ----------- Christian Kiss -----------
@@ -259,6 +256,12 @@ public class InterfaceUserController {
 
 	}
 
+    /**
+     * Logout Methode.
+     * Setzt den Controller zurück und lädt Login.fxml
+     * @author fridolin.zurlinden
+     * @param stage
+     */
 	public void logout() {
 		try {
 			Stage primaryStage = (Stage) logoutPane.getScene().getWindow();
@@ -275,6 +278,13 @@ public class InterfaceUserController {
 		}
 	}
 		
+	
+	/**
+	 * initUser Methode.
+	 * Übergibt den eingeloggten User an die den neuen Controller und zeigt den eingeloggten user im Label "userNamestatus" an.
+	 * @author fridolin.zurlinden
+	 * @param user
+	 */
 	public void initUser(Kunde user) {
 		this.user = user;
 		userNameStatus.setText("User: "+ user.getName());

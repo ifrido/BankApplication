@@ -26,7 +26,12 @@ public class InterfaceAdminController {
 	private Kunde user;
 
     Stage prevStage;
-
+    
+    /**
+     * Methode für die alte Stage zu holen wenn ein neuer Controller geladen wird.
+     * @author fridolin.zurlinden
+     * @param stage
+     */
     public void setPrevStage(Stage stage){
          this.prevStage = stage;
     }
@@ -361,6 +366,12 @@ public class InterfaceAdminController {
 
 	}
 	
+    /**
+     * Logout Methode.
+     * Setzt den Controller zurück und lädt Login.fxml
+     * @author fridolin.zurlinden
+     * @param stage
+     */
 	public void logout() {
 		try {
 			Stage primaryStage = (Stage) logoutPane.getScene().getWindow();
@@ -377,6 +388,12 @@ public class InterfaceAdminController {
 		}
 	}
 	
+	/**
+	 * initUser Methode.
+	 * Übergibt den eingeloggten User an die den neuen Controller und zeigt den eingeloggten user im Label "userNamestatus" an.
+	 * @author fridolin.zurlinden
+	 * @param user
+	 */
 	public void initUser(Kunde user) {
 		this.user = user;		
 		userNameStatus.setText("User: "+user.getName());

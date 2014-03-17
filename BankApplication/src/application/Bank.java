@@ -85,13 +85,6 @@ public class Bank {
   }
   
   /**
-   * Abmelden eines Kunden oder Administrators.
-   */
-  public void logout() {
-    admin = false;
-  }
-  
-  /**
    * Ein neuer Kunde wird aufgenommen.
    * @param kundennummer Nummer des Kunden bei der Bank
    * @param passwort Passwort des Kunden (nicht verschlüsselt!)
