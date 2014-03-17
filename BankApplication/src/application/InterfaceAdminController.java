@@ -38,7 +38,7 @@ public class InterfaceAdminController {
 
 	// Variablen Pane
 	@FXML
-	Pane kundenAnlegen, kontoAnlegen, kontoZahlungen;
+	Pane kundenAnlegen, kontoAnlegen, kontoZahlungen, paneLogin;
 
 	// Variablen Kunde anlegen
 	@FXML
@@ -88,12 +88,14 @@ public class InterfaceAdminController {
 		kundenAnlegen.setVisible(false);
 		kontoAnlegen.setVisible(false);
 		kontoZahlungen.setVisible(false);
+		paneLogin.setVisible(false);
 	}
 
 	// Pane kundenAnlegen anzeigen
 	public void PaneKundenAnlegen() {
 		disableAllPanes();
 		kundenAnlegen.setVisible(true);
+		kundeStatus.setVisible(false);
 
 		// nochmal überdenken, eventuell mit Counter und Globaler Variable
 		kundeKundennummer.setText("10"
@@ -104,6 +106,7 @@ public class InterfaceAdminController {
 	// Pane kontoAnlegen anzeigen
 	public void PaneKontoAnlegen() {
 		disableAllPanes();
+		kontoStatus.setVisible(false);
 		kontoAnlegen.setVisible(true);
 
 		// Kundenliste erst leeren und dann anzeigen
@@ -117,7 +120,9 @@ public class InterfaceAdminController {
 	public void PaneZahlungen() {
 		disableAllPanes();
 		kontoZahlungen.setVisible(true);
-
+		zahlungenStatusEinAus.setVisible(false);
+		zahlungenStatusUeb.setVisible(false);
+		
 		// Mit vorgegebenen Funktionen können die Konten
 		// leider nur über den Kunden geholt werden 
 
@@ -154,6 +159,7 @@ public class InterfaceAdminController {
 			kundeRolle.setSelected(false);
 			
 			kundeStatus.setText("Kunde erfolgreich angelegt");
+			kundeStatus.setVisible(true);
 			
 			// Nochmal überdenken, mit Counter in BANK !!!!
 			kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
@@ -173,6 +179,7 @@ public class InterfaceAdminController {
 		// Status schreiben
 		kontoStatus.setText("Konto " + neuesKonto.getNummer() + "\nfür "
 				+ kundeKonto.getName() + "\nwurde angelegt");
+		kontoStatus.setVisible(true);
 	}
 
 
@@ -235,11 +242,12 @@ public class InterfaceAdminController {
 			// Felder zurücksetzen
 			zahlungenBetrag.clear();
 			zahlungenStatusEinAus.setText(statusText + " erfolgreich");
-			
+			zahlungenStatusEinAus.setVisible(true);
 		} 
 		
 		else {
 			zahlungenStatusEinAus.setText(fehlerAusgabe);
+			zahlungenStatusEinAus.setVisible(true);
 		}
 
 	}
@@ -300,9 +308,11 @@ public class InterfaceAdminController {
 			zahlungenUebEmpfaenger.clear();
 			zahlungenUebMitteilung.clear();
 			zahlungenStatusUeb.setText("überweisung erfolgreich");
+			zahlungenStatusUeb.setVisible(true);
 
 		} else {
 			zahlungenStatusUeb.setText(fehlerAusgabe);
+			zahlungenStatusUeb.setVisible(true);
 		}
 
 	}
@@ -314,6 +324,8 @@ public class InterfaceAdminController {
 	 * ----------- Christian Kiss ----------- 
 	 * Generate SampleData vorher
 	 * bank.dat löschen, sonst doppelt !!!
+	 * Button im GUI gelöscht, da durch mehrfaches drücken
+	 * User doppelt zugewiesen werden
 	 */
 
 	public void generateSampleData() {
