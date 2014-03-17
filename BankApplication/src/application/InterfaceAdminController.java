@@ -9,158 +9,144 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+/**
+ * ----------- Christian Kiss ----------- 
+ * InterfaceAdmin alle Funktionen des
+ * Admin-Interfaces
+ */
+
 public class InterfaceAdminController {
 	private Bank bank = Bank.getInstance();
 
 	/**
 	 * ----------- Christian Kiss ----------- 
-	 * InterfaceAdmin alle Funktionen des
-	 * Admin-Interfaces
+	 * alle FXML-Variablen
 	 */
 
 	// Variablen Pane
-	@FXML 
+	@FXML
 	Pane kundenAnlegen, kontoAnlegen, kontoZahlungen;
-	
-	
+
 	// Variablen Kunde anlegen
 	@FXML
 	TextField kundeKundennummer, kundeName;
 	@FXML
 	PasswordField kundePassword;
 	@FXML
-	Text kundeStatus;	
-	
-	
+	Text kundeStatus;
+
 	// Variablen Konto anlegen
 	@FXML
 	ComboBox<String> kontoKundenliste;
 	@FXML
 	Text kontoStatus;
-	
-	
+
 	// Variablen Zahlungen
-	@FXML 
+	@FXML
 	ComboBox<String> zahlungenKonto, zahlungenUebKonto, zahlungenEinAusBox;
 	@FXML
-	TextField zahlungenBetrag, zahlungenUebEmpfaenger, zahlungenUebBetrag, zahlungenUebMitteilung;
+	TextField zahlungenBetrag, zahlungenUebEmpfaenger, zahlungenUebBetrag,
+			zahlungenUebMitteilung;
 	@FXML
 	Text zahlungenStatusEinAus, zahlungenStatusUeb;
-	
-	
-	
-	
-	
 
-
-
-
+	/**
+	 * ----------- Christian Kiss ----------- 
+	 * Pane visibility
+	 */
 	
-	  /**
-	   * ----------- Christian Kiss -----------
-	   * Pane visibility
-	   */
-		// ------ Funktion ok - ck ------
-		public void disableAllPanes(){
-			
-			kundenAnlegen.setVisible(false);
-			kontoAnlegen.setVisible(false);
-			kontoZahlungen.setVisible(false);
+	// Methode um alle Panes zu disablen
+	public void disableAllPanes() {
+		kundenAnlegen.setVisible(false);
+		kontoAnlegen.setVisible(false);
+		kontoZahlungen.setVisible(false);
+	}
 
-		}
-	
-	
-		// ------ Funktion ok - ck ------
-		// Pane kundenAnlegen anzeigen
-		public void PaneKundenAnlegen(){
-			disableAllPanes();
-			kundenAnlegen.setVisible(true);
-			
-			// nochmal überdenken, mit Counter in Bank!!!!!!!!!!!
-			kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
+	// Pane kundenAnlegen anzeigen
+	public void PaneKundenAnlegen() {
+		disableAllPanes();
+		kundenAnlegen.setVisible(true);
 
-		}		
-		
-		// ------ Funktion ok - ck ------
-		// Pane kontoAnlegen anzeigen
-		public void PaneKontoAnlegen(){
-			disableAllPanes();
-			kontoAnlegen.setVisible(true);
-			
-			kontoKundenliste.getItems().clear();
-			
-			for (Kunde q : bank.holeKunden()) {
+		// nochmal überdenken, eventuell mit Counter und Globaler Variable
+		kundeKundennummer.setText("10"
+				+ String.format("%05d", bank.holeKunden().size()));
+
+	}
+
+	// Pane kontoAnlegen anzeigen
+	public void PaneKontoAnlegen() {
+		disableAllPanes();
+		kontoAnlegen.setVisible(true);
+
+		// Kundenliste erst leeren und dann anzeigen
+		kontoKundenliste.getItems().clear();
+		for (Kunde q : bank.holeKunden()) {
 			kontoKundenliste.getItems().add(q.getKundennummer() + " | " + q.getName());
-			
+		}
+	}
+
+	// Pane kontoZahlungen anzeigen
+	public void PaneZahlungen() {
+		disableAllPanes();
+		kontoZahlungen.setVisible(true);
+
+		// Mit vorgegebenen Funktionen können die Konten
+		// leider nur über den Kunden geholt werden 
+
+		// DropDown-Felder leeren und befüllen
+		zahlungenKonto.getItems().clear();
+		zahlungenUebKonto.getItems().clear();
+
+		// Kunden holen
+		for (Kunde kunde : bank.holeKunden()) {
+
+			// Konten des Kunden holen
+			for (Konto konto : bank.holeKonten(kunde)) {
+
+				// Felder befüllen
+				zahlungenKonto.getItems().add(konto.getNummer());
+				zahlungenUebKonto.getItems().add(konto.getNummer());
 			}
 		}
-			
-			
-		// Pane kontoZahlungen anzeigen
-		public void PaneZahlungen() {
-			disableAllPanes();
-			kontoZahlungen.setVisible(true);
-			
-			// sinnlos!!!!
-			// Es fehlt funktion hole alle 	konten!!!
-			
-			zahlungenKonto.getItems().clear();
-			zahlungenUebKonto.getItems().clear();
-			
-			// Kunden holen
-			for (Kunde kunde : bank.holeKunden()) {
-				
-				// Konten des Kunden holen
-				for (Konto konto : bank.holeKonten(kunde)) {
-					
-					// Felder befüllen
-					zahlungenKonto.getItems().add(konto.getNummer());
-					zahlungenUebKonto.getItems().add(konto.getNummer());
-				}
-			}
-		}
+	}
 
-		
-		
-		
 
-		// ------ Funktion ok - ck ------
-		// Funtion Kunde anlegen
-		public void kundenAnlegen(){
-			
-			// Neuen Kunden anlegen
-			bank.neuerKunde(kundeKundennummer.getText(), kundePassword.getText(), kundeName.getText());		
-				
+	// Funtion Kunde anlegen
+	public void kundenAnlegen() {
 
-			// Felder zurücksetzen
-			kundeKundennummer.clear();
-			kundeName.clear();
-			kundePassword.clear();
-			kundeStatus.setText("Kunde erfolgreich angelegt");
-			
-			// Nochmal überdenken, mit Counter in BANK !!!!
-			kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
-			
-		}
-	
-	
-	
-		// ------ Funktion ok - ck ------
-		// Neues Konto anlegen
-		public void kontoAnlegen(){
-		
-			// Variable kürzen, da Name noch mit angezeigt wird
-			Kunde kundeKonto = bank.holeKunde(kontoKundenliste.getValue().substring(0, 7));
-		    Konto neuesKonto = bank.neuesKonto(0);
-		    kundeKonto.addKonto(neuesKonto);
+		// Neuen Kunden anlegen
+		bank.neuerKunde(kundeKundennummer.getText(), kundePassword.getText(),
+				kundeName.getText());
 
-		    // Status schreiben
-		    kontoStatus.setText("Konto " + neuesKonto.getNummer() + "\nfür " + kundeKonto.getName() + "\nwurde angelegt");
-		}
-		
+		// Felder zurücksetzen
+		kundeKundennummer.clear();
+		kundeName.clear();
+		kundePassword.clear();
+		kundeStatus.setText("Kunde erfolgreich angelegt");
 
-		
-	// Einzahlung oder Auszahlung
+		// Nochmal überdenken, mit Counter in BANK !!!!
+		kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
+
+	}
+
+	// Neues Konto anlegen
+	public void kontoAnlegen() {
+
+		// Variable kürzen, da Name noch mit angezeigt wird für einfachere Bedienung
+		Kunde kundeKonto = bank.holeKunde(kontoKundenliste.getValue().substring(0, 7));
+		Konto neuesKonto = bank.neuesKonto(0);
+		kundeKonto.addKonto(neuesKonto);
+
+		// Status schreiben
+		kontoStatus.setText("Konto " + neuesKonto.getNummer() + "\nfür "
+				+ kundeKonto.getName() + "\nwurde angelegt");
+	}
+
+
+	/**
+	 * ----------- Christian Kiss ----------- 
+	 * Einzahlung oder Auszahlung
+	 */
 	public void zahlungenEinAus() {
 
 		boolean eingabefehler = false;
@@ -172,22 +158,96 @@ public class InterfaceAdminController {
 			eingabefehler = true;
 		}
 
-		// Prüfen ob Ein oder Auszahlung angegeben
+		// Prüfen ob Ein- oder Auszahlung angegeben
 		if (zahlungenEinAusBox.getValue() == null) {
 			fehlerAusgabe += "Bitte angeben, ob Ein- oder Auszahlung\n";
 			eingabefehler = true;
 		}
 
 		// Prüfen, ob Betrag in double wandelbar ist
-		// und auf 2 Nachkommastellen kürzen
+		// und auf 2 Nachkommastellen runden
 		double betragKorrekt = 0;
 		try {
 			// Prüfung, ob Double möglich
 			double betrag = Double.parseDouble(zahlungenBetrag.getText());
 
 			// Runden auf 2 Nachkommastellen
-			// !!! NOCHMALS Überdenken, vielleicht throw Exeption wenn mehr als
-			// 2 Nachkommastellen
+			String betragFormat = ((new DecimalFormat("0.00")).format(betrag));
+
+			// Umwandeln in Double
+			betragKorrekt = Double.parseDouble(betragFormat);
+
+		} catch (NumberFormatException e) {
+			fehlerAusgabe += "Fehler im Feld Betrag";
+			eingabefehler = true;
+		}
+
+		// Wenn keine eingabefehler Funktion ausführen, sonst Status-Text angeben
+		if (eingabefehler == false) {
+
+			String statusText = "";
+
+			// Geld einzahlen
+			if ("Einzahlen".equals(zahlungenEinAusBox.getValue())) {
+				bank.einzahlen(zahlungenKonto.getValue(), betragKorrekt);
+				statusText = "Einzahlung";
+			}
+			
+			// Geld einzahlen
+			else {
+				bank.abheben(zahlungenKonto.getValue(), betragKorrekt);
+				statusText = "Auszahlung";
+			}
+
+			// Felder zurücksetzen
+			zahlungenBetrag.clear();
+			zahlungenStatusEinAus.setText(statusText + " erfolgreich");
+			
+		} 
+		
+		else {
+			zahlungenStatusEinAus.setText(fehlerAusgabe);
+		}
+
+	}
+
+
+	
+	/**
+	 * ----------- Christian Kiss ----------- 
+	 * Überweisung von Konto
+	 */
+	public void zahlungenUeberweisung() {
+
+		boolean eingabefehler = false;
+		String fehlerAusgabe = "";
+
+		// Prüfen ob Konto angegeben
+		if (zahlungenUebKonto.getValue() == null) {
+			fehlerAusgabe += "kein Konto angegeben\n";
+			eingabefehler = true;
+		}
+
+		// Prüfen ob Empfänger angegeben
+		if (zahlungenUebEmpfaenger.getText().isEmpty()) {
+			fehlerAusgabe += "kein Empfänger angegeben\n";
+			eingabefehler = true;
+		}
+
+		// Prüfen ob Mitteilung angegeben
+		if (zahlungenUebMitteilung.getText().isEmpty()) {
+			fehlerAusgabe += "keine Mitteilung angegeben\n";
+			eingabefehler = true;
+		}
+
+		// Prüfen, ob Betrag in double wandelbar ist
+		// und auf 2 Nachkommastellen runden
+		double betragKorrekt = 0;
+		try {
+			// Prüfung, ob Double möglich
+			double betrag = Double.parseDouble(zahlungenUebBetrag.getText());
+
+			// Runden auf 2 Nachkommastellen
 			String betragFormat = ((new DecimalFormat("0.00")).format(betrag));
 
 			// Umwandeln in Double
@@ -199,130 +259,24 @@ public class InterfaceAdminController {
 		}
 
 		if (eingabefehler == false) {
+			bank.ueberweisung(zahlungenUebKonto.getValue(), betragKorrekt,
+					zahlungenUebEmpfaenger.getText(),
+					zahlungenUebMitteilung.getText());
 
-			String statusText = "";
-
-			// Geld einzahlen oder auszahlen
-			if ("Einzahlen".equals(zahlungenEinAusBox.getValue())) {
-				bank.einzahlen(zahlungenKonto.getValue(), betragKorrekt);
-				statusText = "Einzahlung";
-			}
-
-			else {
-				bank.abheben(zahlungenKonto.getValue(), betragKorrekt);
-				statusText = "Auszahlung";
-			}
-
-			zahlungenBetrag.clear();
-			zahlungenStatusEinAus.setText(statusText + " erfolgreich");
-		} else {
-			zahlungenStatusEinAus.setText(fehlerAusgabe);
-		}
-
-	}
-	
-		
-		
-	public void zahlungenUeberweisung() {
-		
-		boolean eingabefehler = false;
-		String fehlerAusgabe = "";
-		
-		// Prüfen ob Konto angegeben
-		if(zahlungenUebKonto.getValue() == null){
-			fehlerAusgabe += "kein Konto angegeben\n";
-			eingabefehler = true;
-		}
-		
-		// Prüfen ob Empfänger angegeben
-		if(zahlungenUebEmpfaenger.getText().isEmpty()){
-			fehlerAusgabe += "kein Empfänger angegeben\n";
-			eingabefehler = true;
-		}
-		
-		// Prüfen ob Mitteilung angegeben
-		if(zahlungenUebMitteilung.getText().isEmpty()){
-			fehlerAusgabe += "keine Mitteilung angegeben\n";
-			eingabefehler = true;
-		}
-		
-
-		// Prüfen, ob Betrag in double wandelbar ist
-		// und auf 2 Nachkommastellen kürzen
-		double betragKorrekt = 0;
-		 try {
-			 	// Prüfung, ob Double möglich
-			 	double betrag = Double.parseDouble(zahlungenUebBetrag.getText());
-			 	
-			 	// Runden auf 2 Nachkommastellen
-			 	// !!! NOCHMALS Überdenken, vielleicht throw Exeption wenn mehr als 2 Nachkommastellen
-			 	String betragFormat = ((new DecimalFormat( "0.00" )).format(betrag));
-			 	
-			 	// Umwandeln in Double
-			 	betragKorrekt = Double.parseDouble(betragFormat);
-			 	
-			 }
-			 catch(NumberFormatException e) {
-					fehlerAusgabe += "Fehler im Feld Betrag";
-					eingabefehler = true;
-			 }
-		
-		if(eingabefehler == false){
-			bank.ueberweisung(zahlungenUebKonto.getValue(), betragKorrekt, zahlungenUebEmpfaenger.getText(), zahlungenUebMitteilung.getText());
-			
 			zahlungenUebBetrag.clear();
 			zahlungenUebEmpfaenger.clear();
 			zahlungenUebMitteilung.clear();
 			zahlungenStatusUeb.setText("überweisung erfolgreich");
-			
-			
-		
-		}
-		else{
+
+		} else {
 			zahlungenStatusUeb.setText(fehlerAusgabe);
 		}
 
-		
-		
-		
-
 	}
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
-//		
-//		
-//		
-//		
-//		// Überweisung
-//		zahlungenUebKonto
-//		zahlungenUebEmpfaenger
-//		zahlungenUebBetrag
-//		zahlungenUebMitteilung
-//		zahlungenStatusUeb
-	
-	
-	
-	
-	
-	
-	
-	// ------ Funktion ok - ck ------
+
+
+
 	/**
 	 * ----------- Christian Kiss ----------- 
 	 * Generate SampleData vorher
@@ -337,12 +291,10 @@ public class InterfaceAdminController {
 		}
 
 		// Konto anlegen
-		// Problem, legt nur ein Konto an ?!?
 		Kunde kundeKonto = bank.holeKunde("1000000");
 		Konto neuesKonto = bank.neuesKonto(0);
+		
 		kundeKonto.addKonto(neuesKonto);
-		Konto neuesKonto2 = bank.neuesKonto(0);
-		kundeKonto.addKonto(neuesKonto2);
 
 		// Geld einzahlen und abheben
 		String einzahlenKontonummer = "262-651117801";
@@ -351,6 +303,7 @@ public class InterfaceAdminController {
 		Random betrag = new Random();
 		for (int i = 1; i <= 10; ++i) {
 			bank.einzahlen(einzahlenKontonummer, betrag.nextInt(1000));
+			bank.abheben(einzahlenKontonummer, betrag.nextInt(1000));
 		}
 
 		// alle Kunden auflisten zur Kontrolle
@@ -362,9 +315,5 @@ public class InterfaceAdminController {
 		}
 
 	}
-	
-	
-	
-	
 
 }

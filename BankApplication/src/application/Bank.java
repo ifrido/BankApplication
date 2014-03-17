@@ -148,8 +148,8 @@ public class Bank {
   }
 
 
-  // Erweiterung Christian Kiss
   /**
+   * Erweiterung Christian Kiss
    * Geld überweisen
    * @param kontonummer Kontonummer zu einem Konto
    * @param betrag Betrag, der einzuzahlen ist
@@ -164,7 +164,7 @@ public class Bank {
 		      
 	  		konto.getBuchungen().add(new Buchung(-betrag, new Date(), "Überweisung " + mitteilung));
 		      
-		
+
 	  		// Zielkontonummer, falls auf der selben Bank, dann überweisung intern
 			Konto kontoZiel = sucheKontonummer(zielkonto);
 			if (kontoZiel != null) {
@@ -172,7 +172,6 @@ public class Bank {
 			}
 			 
 			speichern();
-	  	
 	  	}
 	  	
 	    return konto;
