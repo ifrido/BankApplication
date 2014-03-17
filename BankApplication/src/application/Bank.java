@@ -74,7 +74,7 @@ public class Bank {
    */
   public Kunde login(String kundennummer, String passwort) {
     if (kundennummer.equals("admin") && passwort.equals("admin")) {
-      admin = true;
+      admin = true;	
     }
     for (Kunde k : kunden) {
       if (k.getKundennummer().equals(kundennummer) && k.getPasswort().equals(passwort)) {
@@ -98,8 +98,8 @@ public class Bank {
    * @param name Name des Kunden
    * @return Gibt den neuen Kunden zurück
    */
-  public Kunde neuerKunde(String kundennummer, String passwort, String name) {
-    Kunde kunde = new Kunde(kundennummer, passwort, name);
+  public Kunde neuerKunde(String kundennummer, String passwort, String name, Boolean role) {
+    Kunde kunde = new Kunde(kundennummer, passwort, name, role);
     kunden.add(kunde);
     speichern();
     return kunde;

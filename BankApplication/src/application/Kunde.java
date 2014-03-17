@@ -17,17 +17,20 @@ public class Kunde implements Serializable {
   private String kundennummer;
   private String passwort;
   private String name;
-  private List<Konto> konten;
+  private Boolean admin;
+
+private List<Konto> konten;
   
   public Kunde() {
     konten = new ArrayList<Konto>();
   }
 
-  public Kunde(String kundennummer, String passwort, String name) {
+  public Kunde(String kundennummer, String passwort, String name, Boolean admin) {
     this();
     this.kundennummer = kundennummer;
     this.passwort = passwort;
     this.name = name;
+    this.admin = admin;
     konten.add(Bank.getInstance().neuesKonto(0.0));
   }
 
@@ -53,6 +56,14 @@ public class Kunde implements Serializable {
 
   public void setName(String name) {
     this.name = name;
+  }
+  
+  public Boolean getAdmin() {
+		return admin;
+  }
+
+  public void setAdmin(Boolean admin) {
+	  	this.admin = admin;
   }
 
   public List<Konto> getKonten() {

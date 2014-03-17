@@ -8,62 +8,41 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="" prefHeight="600.0" prefWidth="900.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.InterfaceUserController">
+<AnchorPane id="" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceUserController">
 	<children>
-		<Accordion fx:id="menue" layoutX="14.0" layoutY="128.0"
-			prefHeight="96.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml">
+		<Text fx:id="userNameStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default"/>
+		<Accordion fx:id="menue" layoutX="14.0" layoutY="128.0" prefHeight="96.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml">
 			<panes>
-				<TitledPane id="" fx:id="menueKonten" animated="false"
-					onMouseClicked="#PaneUserKonten" text="Konten" />
-				<TitledPane animated="false" onMouseClicked="#PaneUserZahlungen"
-					text="Zahlungen" />
-				<TitledPane fx:id="" animated="false" onMouseClicked="#PaneUserEdit"
-					text="Benutzer verwalten" />
-				<TitledPane animated="false" text="Logout"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<TitledPane id="" fx:id="menueKonten" animated="false" onMouseClicked="#PaneUserKonten" text="Konten" />
+				<TitledPane animated="false" onMouseClicked="#PaneUserZahlungen" text="Zahlungen" />
+				<TitledPane fx:id="" animated="false" onMouseClicked="#PaneUserEdit" text="Benutzer verwalten" />
+				<TitledPane fx:id="logoutPane" animated="false" onMouseClicked="#logout" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 			</panes>
 		</Accordion>
-		<AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="96.0"
-			prefWidth="219.0" styleClass="logo"
-			stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" />
+		<AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="96.0" prefWidth="219.0" styleClass="logo" stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" />
 
-		<Pane fx:id="userKonten" layoutX="242.0" layoutY="128.0"
-			prefHeight="460.0" prefWidth="644.0" visible="false"
-			xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+		<Pane fx:id="userKonten" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 			<children>
-				<ListView fx:id="kontenBuchungen1" layoutX="15.0" layoutY="37.0"
-					prefHeight="400.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8"
-					xmlns:fx="http://javafx.com/fxml/1" />
-				<Text layoutX="15.0" layoutY="18.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Konto wählen" />
-				<ChoiceBox fx:id="kontoWahl" layoutX="130.0" prefHeight="25.0"
-					prefWidth="150.0" xmlns:fx="http://javafx.com/fxml">
+				<ListView fx:id="kontenBuchungen1" layoutX="15.0" layoutY="37.0" prefHeight="400.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<Text layoutX="15.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Konto wählen" />
+				<ChoiceBox fx:id="kontoWahl" layoutX="130.0" prefHeight="25.0" prefWidth="150.0" xmlns:fx="http://javafx.com/fxml">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 						</FXCollections>
 					</items>
 				</ChoiceBox>
-				<Button layoutX="300.0" mnemonicParsing="false"
-					onMouseClicked="#kontenDetail" text="anzeigen" />
-				<Text fontSmoothingType="GRAY" layoutX="400.0" layoutY="450.0"
-					strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo">
+				<Button layoutX="300.0" mnemonicParsing="false" onMouseClicked="#kontenDetail" text="anzeigen" />
+				<Text fontSmoothingType="GRAY" layoutX="400.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saldo">
 					<fill>
 						<Color green="0.5454546213150024" red="1.0" />
 					</fill>
 				</Text>
-				<Text fx:id="kontenSaldo" fontSmoothingType="GRAY" layoutX="450.0"
-					layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0"
-					textAlignment="RIGHT" wrappingWidth="124.0" xmlns="http://javafx.com/javafx/8"
-					xmlns:fx="http://javafx.com/fxml/1">
+				<Text fx:id="kontenSaldo" fontSmoothingType="GRAY" layoutX="450.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="124.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 					<fill>
 						<Color green="0.5454546213150024" red="1.0" />
 					</fill>
 				</Text>
-				<Text fontSmoothingType="GRAY" layoutX="580.0" layoutY="450.0"
-					strokeType="OUTSIDE" strokeWidth="0.0" text="CHF"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+				<Text fontSmoothingType="GRAY" layoutX="580.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHF" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 					<fill>
 						<Color green="0.5454546213150024" red="1.0" />
 					</fill>
@@ -71,40 +50,23 @@
 			</children>
 		</Pane>
 
-		<Pane fx:id="userZahlungen" layoutX="242.0" layoutY="128.0"
-			prefHeight="460.0" prefWidth="644.0" visible="false">
+		<Pane fx:id="userZahlungen" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" visible="false">
 			<children>
-				<ChoiceBox fx:id="zahlungKonto" layoutX="150.0" layoutY="3.0"
-					prefHeight="25.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml">
+				<ChoiceBox fx:id="zahlungKonto" layoutX="150.0" layoutY="3.0" prefHeight="25.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml">
 					<items>
 						<FXCollections fx:factory="observableArrayList">
 						</FXCollections>
 					</items>
 				</ChoiceBox>
-				<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Konto" />
-				<Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Empfänger-Konto" />
-				<Text layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Betrag" xmlns="http://javafx.com/javafx/8"
-					xmlns:fx="http://javafx.com/fxml/1" />
-				<Text layoutX="15.0" layoutY="140.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Mitteilung" xmlns="http://javafx.com/javafx/8"
-					xmlns:fx="http://javafx.com/fxml/1" />
-				<TextField fx:id="zahlungEmpfänger" layoutX="150.0"
-					layoutY="43.0" prefHeight="25.0" prefWidth="300.0"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
-				<TextField fx:id="zahlungBetrag" layoutX="150.0" layoutY="83.0"
-					prefHeight="25.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8"
-					xmlns:fx="http://javafx.com/fxml/1" />
-				<TextField fx:id="zahlungMitteilung" layoutX="150.0"
-					layoutY="123.0" prefHeight="25.0" prefWidth="300.0"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
-				<Button layoutX="390.0" layoutY="163.0" mnemonicParsing="false"
-					onMouseClicked="#zahlungen" text="senden" />
-				<Text fx:id="zahlungFehler" layoutX="150.0" layoutY="213.0"
-					strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+				<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Konto" />
+				<Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empfänger-Konto" />
+				<Text layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Betrag" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<Text layoutX="15.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mitteilung" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<TextField fx:id="zahlungEmpfänger" layoutX="150.0" layoutY="43.0" prefHeight="25.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<TextField fx:id="zahlungBetrag" layoutX="150.0" layoutY="83.0" prefHeight="25.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<TextField fx:id="zahlungMitteilung" layoutX="150.0" layoutY="123.0" prefHeight="25.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<Button layoutX="390.0" layoutY="163.0" mnemonicParsing="false" onMouseClicked="#zahlungen" text="senden" />
+				<Text fx:id="zahlungFehler" layoutX="150.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 					<fill>
 						<Color red="1.0" />
 					</fill>
@@ -114,27 +76,16 @@
 				<Insets left="5.0" />
 			</padding>
 		</Pane>
-		<Pane fx:id="userEdit" layoutX="242.0" layoutY="128.0"
-			prefHeight="460.0" prefWidth="644.0" visible="false"
-			xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+		<Pane fx:id="userEdit" layoutX="242.0" layoutY="128.0" prefHeight="460.0" prefWidth="644.0" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 			<children>
-				<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Kundennummer" />
-				<TextField fx:id="userKundennummer" editable="false"
-					layoutX="150.0" layoutY="3.0" prefHeight="25.0" prefWidth="300.0" />
-				<Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Name" />
-				<TextField fx:id="userName" layoutX="150.0" layoutY="43.0"
-					prefHeight="25.0" prefWidth="300.0" />
-				<Text layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE"
-					strokeWidth="0.0" text="Passwort" />
-				<PasswordField fx:id="userPasswort" layoutX="150.0"
-					layoutY="83.0" prefHeight="25.0" prefWidth="300.0" />
-				<Button fx:id="" layoutX="383.0" layoutY="123.0"
-					mnemonicParsing="false" onMouseClicked="#userEdit" text="speichern" />
-				<Text fx:id="userStatus" layoutX="150.0" layoutY="189.0"
-					strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0"
-					xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+				<Text layoutX="15.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kundennummer" />
+				<TextField fx:id="userKundennummer" editable="false" layoutX="150.0" layoutY="3.0" prefHeight="25.0" prefWidth="300.0" />
+				<Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+				<TextField fx:id="userName" layoutX="150.0" layoutY="43.0" prefHeight="25.0" prefWidth="300.0" />
+				<Text layoutX="15.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" />
+				<PasswordField fx:id="userPasswort" layoutX="150.0" layoutY="83.0" prefHeight="25.0" prefWidth="300.0" />
+				<Button fx:id="" layoutX="383.0" layoutY="123.0" mnemonicParsing="false" onMouseClicked="#userEdit" text="speichern" />
+				<Text fx:id="userStatus" layoutX="150.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 					<fill>
 						<Color red="1.0" />
 					</fill>

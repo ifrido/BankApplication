@@ -11,17 +11,18 @@
 
 <AnchorPane id="" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InterfaceAdminController">
 	<children>
+		<Text fx:id="userStatus" layoutX="800" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User: Default"/>
 		<Accordion fx:id="menue" layoutX="14.0" layoutY="128.0" prefHeight="68.0" prefWidth="219.0" xmlns:fx="http://javafx.com/fxml">
 			<panes>
 				<TitledPane id="" fx:id="" animated="false" onMouseClicked="#PaneKundenAnlegen" text="Kunden anlegen" />
 				<TitledPane fx:id="" animated="false" onMouseClicked="#PaneKontoAnlegen" text="Konten anlegen" />
 				<TitledPane animated="false" onMouseClicked="#PaneZahlungen" text="Zahlungen" />
 				<TitledPane animated="false" onMouseClicked="#generateSampleData" text="Sampledata" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
-				<TitledPane animated="false" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
+				<TitledPane fx:id="logoutPane" animated="false" onMouseClicked="#logout" text="Logout" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 			</panes>
 		</Accordion>
-		<AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="96.0" prefWidth="219.0" styleClass="logo" stylesheets="file:/C:/_ck/_Studium/Java%20II/LE10%20Projektarbeit%20github/BankApplication/BankApplication/src/application/application.css" />
-
+		<AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="96.0" prefWidth="219.0" styleClass="logo" stylesheets="file:src/application/application.css" />
+		
 		<Pane fx:id="kundenAnlegen" layoutX="242.0" layoutY="128.0" onMouseClicked="#kundenAnlegen" prefHeight="460.0" prefWidth="644.0" visible="false">
 			<children>
 				<Text layoutX="15.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="neuen Kunden anlegen" />
@@ -36,7 +37,8 @@
 				<TextField fx:id="kundeName" layoutX="150.0" layoutY="73.0" prefHeight="25.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 				<Text layoutX="15.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
 				<PasswordField fx:id="kundePassword" layoutX="150.0" layoutY="113.0" prefHeight="25.0" prefWidth="300.0" />
-				<Button layoutX="395.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#kundenAnlegen" text="anlegen" />
+				<CheckBox fx:id="kundeRolle" layoutX="150.0" layoutY="153.0" mnemonicParsing="false" text="Administrator" />
+				<Button layoutX="395.0" layoutY="190.0" mnemonicParsing="false" onMouseClicked="#kundenAnlegen" text="anlegen" />
 				<Text fx:id="kundeStatus" layoutX="150.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 					<fill>
 						<Color red="1.0" />

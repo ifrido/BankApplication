@@ -2,12 +2,18 @@ package application;
 
 import java.text.DecimalFormat;
 import java.util.Random;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * ----------- Christian Kiss ----------- 
@@ -17,7 +23,14 @@ import javafx.scene.text.Text;
 
 public class InterfaceAdminController {
 	private Bank bank = Bank.getInstance();
+	private Kunde user;
 
+    Stage prevStage;
+
+    public void setPrevStage(Stage stage){
+         this.prevStage = stage;
+    }
+	
 	/**
 	 * ----------- Christian Kiss ----------- 
 	 * alle FXML-Variablen
@@ -33,8 +46,11 @@ public class InterfaceAdminController {
 	@FXML
 	PasswordField kundePassword;
 	@FXML
-	Text kundeStatus;
-
+	CheckBox kundeRolle;
+	@FXML
+	Text kundeStatus;	
+	
+	
 	// Variablen Konto anlegen
 	@FXML
 	ComboBox<String> kontoKundenliste;
@@ -49,6 +65,18 @@ public class InterfaceAdminController {
 			zahlungenUebMitteilung;
 	@FXML
 	Text zahlungenStatusEinAus, zahlungenStatusUeb;
+	
+	//Variablen Logout
+	@FXML
+	TitledPane logoutPane;
+	
+	//Variable angemeldeter User
+	@FXML
+	Text userNameStatus;
+	
+	
+	
+	
 
 	/**
 	 * ----------- Christian Kiss ----------- 
@@ -111,12 +139,36 @@ public class InterfaceAdminController {
 	}
 
 
-	// Funtion Kunde anlegen
-	public void kundenAnlegen() {
+		// ------ Funktion ok - ck ------
+		// Funtion Kunde anlegen
+		public void kundenAnlegen(){
+			
+			// Neuen Kunden anlegen
+			bank.neuerKunde(kundeKundennummer.getText(), kundePassword.getText(), kundeName.getText(), kundeRolle.isSelected());		
+				
 
-		// Neuen Kunden anlegen
-		bank.neuerKunde(kundeKundennummer.getText(), kundePassword.getText(),
-				kundeName.getText());
+			// Felder zurücksetzen
+			kundeKundennummer.clear();
+			kundeName.clear();
+			kundePassword.clear();
+			kundeRolle.setSelected(false);
+			
+			kundeStatus.setText("Kunde erfolgreich angelegt");
+			
+			// Nochmal überdenken, mit Counter in BANK !!!!
+			kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
+			
+		}
+	
+	
+		// ------ Funktion ok - ck ------
+		// Neues Konto anlegen
+		public void kontoAnlegen(){
+		
+			// Variable kürzen, da Name noch mit angezeigt wird
+			Kunde kundeKonto = bank.holeKunde(kontoKundenliste.getValue().substring(0, 7));
+		    Konto neuesKonto = bank.neuesKonto(0);
+		    kundeKonto.addKonto(neuesKonto);
 
 		// Felder zurücksetzen
 		kundeKundennummer.clear();
@@ -287,7 +339,7 @@ public class InterfaceAdminController {
 
 		// 10 neuen Kunden inkl. erstes Bankkonto anlegen
 		for (int i = 0; i < 10; i++) {
-			bank.neuerKunde("10" + String.format("%05d", i), "passwort", "Kunde-" + i);
+			bank.neuerKunde("10" + String.format("%05d", i), "passwort", "Kunde-" + i, true);
 		}
 
 		// Konto anlegen
@@ -315,5 +367,32 @@ public class InterfaceAdminController {
 		}
 
 	}
+	
+	public void logout() {
+		try {
+			Stage primaryStage = (Stage) logoutPane.getScene().getWindow();
+			primaryStage.setTitle("Login");
+			FXMLLoader myLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+			Pane myPane = (Pane)myLoader.load();
+			BankController controller = (BankController) myLoader.getController();
+			controller.setPrevStage(primaryStage);
+			Scene myScene = new Scene(myPane);        
+			primaryStage.setScene(myScene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void initUser(Kunde user) {
+		this.user = user;
+	}
+
+
+
+
+	
+	
+	
 
 }
