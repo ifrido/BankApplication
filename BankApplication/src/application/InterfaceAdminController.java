@@ -159,6 +159,7 @@ public class InterfaceAdminController {
 			kundeRolle.setSelected(false);
 			
 			kundeStatus.setText("Kunde erfolgreich angelegt");
+			kundeStatus.setVisible(true);
 			
 			// Nochmal überdenken, mit Counter in BANK !!!!
 			kundeKundennummer.setText("10" + String.format("%05d", bank.holeKunden().size()));
@@ -178,6 +179,7 @@ public class InterfaceAdminController {
 		// Status schreiben
 		kontoStatus.setText("Konto " + neuesKonto.getNummer() + "\nfür "
 				+ kundeKonto.getName() + "\nwurde angelegt");
+		kontoStatus.setVisible(true);
 	}
 
 
@@ -240,11 +242,12 @@ public class InterfaceAdminController {
 			// Felder zurücksetzen
 			zahlungenBetrag.clear();
 			zahlungenStatusEinAus.setText(statusText + " erfolgreich");
-			
+			zahlungenStatusEinAus.setVisible(true);
 		} 
 		
 		else {
 			zahlungenStatusEinAus.setText(fehlerAusgabe);
+			zahlungenStatusEinAus.setVisible(true);
 		}
 
 	}
@@ -305,9 +308,11 @@ public class InterfaceAdminController {
 			zahlungenUebEmpfaenger.clear();
 			zahlungenUebMitteilung.clear();
 			zahlungenStatusUeb.setText("überweisung erfolgreich");
+			zahlungenStatusUeb.setVisible(true);
 
 		} else {
 			zahlungenStatusUeb.setText(fehlerAusgabe);
+			zahlungenStatusUeb.setVisible(true);
 		}
 
 	}
